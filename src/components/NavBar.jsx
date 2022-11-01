@@ -10,6 +10,7 @@ function NavBar() {
     const navigate = useNavigate() // Navigate is used to assign links, as a tags refresh the page. 
     const location = useLocation() //location hook
 
+    //route is purposely passed in the function call below. 
     const pathMatchRoute = (route) => {
        if(route === location.pathname) {
         return true
@@ -19,19 +20,19 @@ function NavBar() {
 
   return (
     <footer className='navbar'>
-        <nav className='navbarBar'>
+        <nav className='navbarNav'>
             <ul className='navbarListItems'>
                 <li className="navbarListItem">
                     <ExploreIcon fill = {pathMatchRoute('/') ? '#2c2c2c': '#8f8f8f' } width = '36px' height ='36px' onClick = {() => {navigate('/')}} />
-                    <p>Explore</p>
+                    <p className={pathMatchRoute('/') ? 'navbarListItemNameActive': 'navbarListItemName'}>Explore</p>
                 </li>
                 <li className="navbarListItem">
                     <OfferIcon fill = {pathMatchRoute('/offers') ? '#2c2c2c': '#8f8f8f' } width = '36px' height ='36px' onClick={() => {navigate('/offers')}} />
-                    <p>Offer</p>
+                    <p className={pathMatchRoute('/offers') ? 'navbarListItemNameActive': 'navbarListItemName'}>Offer</p>
                 </li>
                 <li className="navbarListItem" >
                     <PersonOutLineIcon fill = {pathMatchRoute('/profile') ? '#2c2c2c': '#8f8f8f' } width = '36px' height ='36px' onClick={() => {navigate('/profile')}} />
-                    <p>Profile</p>
+                    <p className={pathMatchRoute('/profile') ? 'navbarListItemNameActive': 'navbarListItemName'}>Profile</p>
                 </li>
             </ul>
         </nav>
