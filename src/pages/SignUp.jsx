@@ -1,10 +1,14 @@
+import { getSpaceUntilMaxLength } from '@testing-library/user-event/dist/utils'
 import React, {useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
+import {getAuth, createUserWithEmailAndPassword, updateProfile} from 'firebase/auth'
+import {db} from '../firebase.config'
 import {ReactComponent as ArrowRightIcon} from '../assets/svg/keyboardArrowRightIcon.svg'
 import visibilityIcon from '../assets/svg/visibilityIcon.svg'
 
 function SignUp() {
 
+  
   const [showPassword, setShowPassword] = useState(false)
   const [formData, setFormData] = useState({
     email:'',
@@ -25,6 +29,26 @@ function SignUp() {
     }))
   }
 
+  const onSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const  auth = getAuth() //obtaining auth value(object)
+
+      const userCredential = await createUserWithEmailAndPassword
+      (auth, email, password) //destructured from form object
+      
+      const user = userCredential.user // obtains the user value
+
+      updateProfile(auth.currentUser, { 
+        displayName: name //sets the display name of the user, to the name from the formData
+      })
+
+      navigate('/') //returns to home screen once logged in. 
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
 
   return (
@@ -34,7 +58,7 @@ function SignUp() {
           <p className="pageHeader">Welcome Back!</p>
           </header>
           
-            <form>
+            <form onSubmit={onSubmit}>
               <input type="text" className='nameInput' placeholder='Name' id='name' value={name}
               onChange = {onChange} required/>
               <input type="email" className='emailInput' placeholder='Email Address' id='email' value={email}
