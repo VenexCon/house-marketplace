@@ -1,7 +1,8 @@
-import { getSpaceUntilMaxLength } from '@testing-library/user-event/dist/utils'
+//import { getSpaceUntilMaxLength } from '@testing-library/user-event/dist/utils'
 import React, {useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import {getAuth, createUserWithEmailAndPassword, updateProfile} from 'firebase/auth'
+import {doc, setDoc, serverTimestamp} from 'firebase/firestore'
 import {db} from '../firebase.config'
 import {ReactComponent as ArrowRightIcon} from '../assets/svg/keyboardArrowRightIcon.svg'
 import visibilityIcon from '../assets/svg/visibilityIcon.svg'
@@ -32,7 +33,7 @@ function SignUp() {
   const onSubmit = async (e) => {
     e.preventDefault()
     try {
-      const  auth = getAuth() //obtaining auth value(object)
+      const auth = getAuth() //obtaining auth value(object)
 
       const userCredential = await createUserWithEmailAndPassword
       (auth, email, password) //destructured from form object
@@ -42,6 +43,13 @@ function SignUp() {
       updateProfile(auth.currentUser, { 
         displayName: name //sets the display name of the user, to the name from the formData
       })
+
+      const formDataCopy = {...formData};
+      delete(formDataCopy.password)
+      formDataCopy.timestamp = serverTimestamp() //adds server timestamp 
+
+      await setDoc(doc(db, 'users', user.uid), formDataCopy)
+
 
       navigate('/') //returns to home screen once logged in. 
     } catch (error) {
