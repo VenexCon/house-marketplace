@@ -1,15 +1,17 @@
 import React from 'react'
+import { useAuthStatus } from './hooks/useAuthStatus'
 import { Navigate, Outlet } from 'react-router-dom'
-import {getAuth} from 'firebase/auth'
-
 
 
 
 const PrivateRoute = () => {
 
-    const auth = getAuth()
+    const {loggedIn, checkingStatus} = useAuthStatus();
+    
+    if(checkingStatus) {
+        return <h3>Loading...</h3>
+    }
 
-    const loggedIn = false
 
     return  loggedIn ? <Outlet /> : <Navigate to = '/sign-in' />
 
