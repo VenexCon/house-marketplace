@@ -1,14 +1,17 @@
 import React from 'react'
-import {getAuth, updateProfile} from 'firebase/auth'
+import {getAuth, updateEmail, updateProfile} from 'firebase/auth'
 import {useEffect, useState} from 'react'
-import {updateDoc} from 'firebase/firestore'
+import {updateDoc, doc} from 'firebase/firestore'
 import {useNavigate, Link} from 'react-router-dom'
+import { db } from '../firebase.config'
+import {toast} from 'react-toastify'
 
 
 
 function Profile() {
   const auth = getAuth()//obtains the current auth object for the firebase db
   const navigate = useNavigate()
+  
 
   const [changeDetails, setChangeDetails] = useState(false)
 
@@ -24,8 +27,31 @@ function Profile() {
     navigate('/')
   }
 
-  const onSubmit = () => {
-    console.log('123')
+  const onSubmit = async () => {
+    try {
+      if(auth.currentUser.displayName !== name) {
+        //update display name
+
+        await updateProfile(auth.currentUser, {
+          displayName: name
+        })
+        //update in firestore
+        const userRef = doc(db, 'users', auth.currentUser.uid)
+        await updateDoc(userRef, {
+          name, 
+        }) 
+      }
+      if(auth.currentUser.email !== email) {
+        updateEmail(auth.currentUser, email)
+        const userRef = doc(db, 'users', auth.currentUser.uid)
+        await updateDoc(userRef, {
+          email
+        })
+
+      }
+    } catch (error) {
+      toast.error('Could not update profile')
+    }
   }
 
   const onChange = (e) => {
@@ -62,7 +88,7 @@ function Profile() {
 
             <label htmlFor="email">Email:</label>
             <input type="text" id= "email" className={!changeDetails ? 'profileEmail' : 'profileEmailActive'}
-            disabled = {!changeDetails} value = {email} />
+            disabled = {!changeDetails} value = {email} onChange = {onChange} />
 
           </form>
         </div>

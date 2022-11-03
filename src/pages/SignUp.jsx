@@ -36,6 +36,7 @@ function SignUp() {
     try {
       const auth = getAuth() //obtaining auth value(object)
 
+
       const userCredential = await createUserWithEmailAndPassword
       (auth, email, password) //destructured from form object
       
