@@ -660,6 +660,8 @@ button {
   flex-direction: column;
 }
 
+ 
+
 .profileName,
 .profileEmail,
 .profileAddress,
@@ -671,6 +673,10 @@ button {
   font-weight: 600;
   width: 100%;
 }
+
+.profileEmail {
+}
+
 .profileNameActive {
   background-color: rgba(44, 44, 44, 0.1);
 }
