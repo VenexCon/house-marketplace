@@ -55,7 +55,8 @@ function SignUp() {
 
       navigate('/') //returns to home screen once logged in. 
     } catch (error) {
-      toast.error('Something went wrong !')
+      toast.error(error.message)
+     
     }
   }
 
