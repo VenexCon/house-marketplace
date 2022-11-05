@@ -2,9 +2,11 @@ import React from 'react'
 import {getAuth, updateEmail, updateProfile} from 'firebase/auth'
 import { useState} from 'react'
 import {updateDoc, doc} from 'firebase/firestore'
-import {useNavigate, } from 'react-router-dom'
+import {useNavigate, Link } from 'react-router-dom'
 import { db } from '../firebase.config'
 import {toast} from 'react-toastify'
+import arrowRight from '../assets/svg/keyboardArrowRightIcon.svg'
+import homeIcon from '../assets/svg/homeIcon.svg'
 
 
 
@@ -92,6 +94,11 @@ function Profile() {
 
           </form>
         </div>
+        <Link to ={'/create-listing'} className = 'createListing' id='profileCreateListingBar'>
+          <img src={homeIcon} alt="home" />
+          <p>Sale or rent your home.</p>
+          <img src={arrowRight} alt="Arrow Right" />
+        </Link>
       </main>
     </div>
   )

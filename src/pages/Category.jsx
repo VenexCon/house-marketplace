@@ -57,7 +57,7 @@ function Category() {
                 {listings.map(listing => {
                     //@Todo - replace with styled component
                     //listing.data and listing.id taken from items pushed onto array. 
-                   return  <ListingItem listing = {listing.data} id = {listing.id} />
+                   return  <ListingItem listing = {listing.data} id = {listing.id} key = {listing.id} />
                 })}
             </ul>
         </main>

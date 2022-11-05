@@ -8,7 +8,8 @@ import bathtubIcon from '../assets/svg/bathtubIcon.svg'
 function ListingItem({listing, id, onDelete}) {
 
 
-    // Consultant's images and basic profiles will go here. 
+    // Consultant's images and basic profiles will go here.
+    //to be displayed on the consultants page 
   return (
     <li className='categoryListing'>
         <Link to={`/category/${listing.type}/${id}`} className = 'categoryListingLink'>

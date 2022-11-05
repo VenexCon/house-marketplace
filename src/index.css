@@ -706,6 +706,9 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+ 
+}.createListing:hover {
+  background-color: rgba(44, 44, 44, 0.1);
 }
 
 .listingText {
