@@ -1,8 +1,8 @@
 import React from 'react'
 import {getAuth, updateEmail, updateProfile} from 'firebase/auth'
-import {useEffect, useState} from 'react'
+import { useState} from 'react'
 import {updateDoc, doc} from 'firebase/firestore'
-import {useNavigate, Link} from 'react-router-dom'
+import {useNavigate, } from 'react-router-dom'
 import { db } from '../firebase.config'
 import {toast} from 'react-toastify'
 

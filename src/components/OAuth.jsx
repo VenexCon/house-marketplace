@@ -34,10 +34,7 @@ function OAuth() {
                     timestamp: serverTimestamp()
                 })
             }
-            
             navigate('/')
-
-            
         } catch (error) {
             toast.error(error.message)
         }
