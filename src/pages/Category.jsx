@@ -4,7 +4,7 @@ import {Collection, getDocs, query, where, orderBy, limit, startafter, collectio
 import {toast} from 'react-toastify'
 import Spinner from '../components/Spinner'
 import {db} from '../firebase.config'
-
+import ListingItem from '../components/ListingItem'
 
 function Category() {
     // This is where you would fetch the list of consultants 
@@ -56,7 +56,8 @@ function Category() {
             <ul className="categoryListings">
                 {listings.map(listing => {
                     //@Todo - replace with styled component
-                   return  <h3 key = {listing.id}>{listing.data.name}</h3>
+                    //listing.data and listing.id taken from items pushed onto array. 
+                   return  <ListingItem listing = {listing.data} id = {listing.id} />
                 })}
             </ul>
         </main>
