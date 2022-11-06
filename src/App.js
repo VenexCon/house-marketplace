@@ -10,6 +10,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import CreateListing from "./pages/CreateListing";
+import Listing from "./pages/Listing";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
@@ -22,6 +23,10 @@ function App() {
           <Route path="/" element={<Explore />} /> {/* Children */}
           <Route path="/offers" element={<Offers />} />
           <Route path="/category/:categoryName" element={<Category />} />
+          <Route
+            path="/category/:categoryName/:listingId"
+            element={<Listing />}
+          />
           {/* Private Routes are nested inside outer routes. */}
           <Route path="/profile" element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />

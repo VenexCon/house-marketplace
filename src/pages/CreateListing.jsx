@@ -85,7 +85,6 @@ function CreateListing() {
         } else {
            geolocation.lat = lat
            geolocation.lng = long
-           location = address
         }
 
         setLoading(false)
@@ -143,9 +142,9 @@ function CreateListing() {
       timestamp: serverTimestamp()
     }
 
+    formDataCopy.location = address
     delete formDataCopy.images //delete image object from formData, not needed in database
     delete formDataCopy.address//address needs to be refreshed every submission.  
-    location && (formDataCopy.location = location)
     !formDataCopy.offer && delete formDataCopy.discountedPrice
 
     const docRef = await addDoc(collection(db, 'listings'), formDataCopy) // addsDoc to DB, Listings collection

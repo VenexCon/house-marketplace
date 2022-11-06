@@ -17,7 +17,7 @@ function Category() {
             try {
                 //get reference
                 const listingsRef = collection(db, 'listings')
-                const q = query(listingsRef, where ('type','==',params.categoryName), //same as App.js
+                const q = query(listingsRef, where ('type','==',params.categoryName), //same as App.js, comes from explore Links
                 orderBy('timestamp', 'desc', limit(10)
                 )) 
                 //execute query
