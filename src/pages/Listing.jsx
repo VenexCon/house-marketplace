@@ -52,7 +52,7 @@ function Listing() {
         style ={{height: '300px'}}
         >
         {listing.imageUrls.map((url, index) => {
-          return (            <SwiperSlide key={index}>
+          return (<SwiperSlide key={index}>
                 <div
                     className='swiperSlideDiv'
                     style={{

@@ -150,7 +150,7 @@ function CreateListing() {
     const docRef = await addDoc(collection(db, 'listings'), formDataCopy) // addsDoc to DB, Listings collection
     setLoading(false)
     toast.success('Listing Created')
-    navigate(`/category:${formDataCopy.type}/${docRef.id}`)
+    navigate(`/category/:${formDataCopy.type}/${docRef.id}`)
    
   }
 
@@ -192,9 +192,9 @@ function CreateListing() {
         </header>
         <main>
             <form onSubmit={onSubmit}>
-                <label className='formLabel'>Sell/Rent</label>
+                <label className='formLabel'>Sale/Rent</label>
                 <div className="formButtons">
-                    <button type = 'button' className = {type === 'sell' ? 'formButtonActive' : 'formButton'} id = 'type'
+                    <button type = 'button' className = {type === 'sale' ? 'formButtonActive' : 'formButton'} id = 'type'
                     value = 'sale' onClick={onMutate}>Sale</button>
                      <button type = 'button' className = {type === 'rent' ? 'formButtonActive' : 'formButton'} id = 'type'
                     value = 'rent' onClick={onMutate}>Rent</button>
