@@ -65,8 +65,8 @@ function CreateListing() {
         let location = null
 
         if(geolocation) {
-            
-            const response = await fetch (`https://maps.googleapis.com/maps/api/geocode/json?${address}&key=AIzaSyBGaVQ33OHA48IyLrz85bbJooAUJeF2QOY`)
+            console.log(  process.env.REACT_APP_GEOCODINGAPI_KEY)
+            const response = await fetch (`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GEOCODINGAPI_KEY}`)
             const data = response.data
             console.log(data)
         } else {
