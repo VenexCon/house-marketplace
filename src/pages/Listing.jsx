@@ -6,13 +6,18 @@ import {getAuth} from 'firebase/auth'
 import {db} from '../firebase.config'
 import Spinner from '../components/Spinner'
 import shareIcon from '../assets/svg/shareIcon.svg'
+import Swipercore, { Navigation, Pagination, Scrollbar, A11y  } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react';
 import {toast} from 'react-toastify'
+import 'swiper/swiper-bundle.css';
 
 function Listing() {
 
     const [listing, setListing] = useState(null)
     const [loading, setLoading] = useState(true)
     const [shareLinkCopied, setShareLinkCopied] = useState(null)
+
+  
 
     const navigate = useNavigate()
     const auth = getAuth()
@@ -24,6 +29,7 @@ function Listing() {
             const docSnap = await getDoc(docRef)
             if(docSnap.exists()) {
                 setListing(docSnap.data())
+                console.log(docSnap.data())
                 setLoading(false)
             } else {
                 console.log('No Listing Found')
@@ -39,7 +45,26 @@ function Listing() {
     }
   return (
     <main>
-        {/* Add Slide Show */}
+
+        <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]} 
+        slidesPerView={1} pagination={{ clickable: true }}
+        navigation
+        style ={{height: '300px'}}
+        >
+        {listing.imageUrls.map((url, index) => {
+          return (            <SwiperSlide key={index}>
+                <div
+                    className='swiperSlideDiv'
+                    style={{
+                        background: `url(${listing.imageUrls[index]}) center no-repeat`,
+                        backgroundSize: 'cover',
+                    }}
+                ></div>
+            </SwiperSlide>)
+    })}
+      </Swiper>
+
+
         <div className="shareIconDiv" onClick={() => {
             navigator.clipboard.writeText(window.location.href)
             setShareLinkCopied(true)
