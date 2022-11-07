@@ -38,9 +38,9 @@ function Slider() {
 
 
 
-    if(loading) {
+    /* if(loading) {
         return <Spinner />
-    }
+    } */
 
    
 
