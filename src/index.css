@@ -649,6 +649,7 @@ button {
 
 .profileCard {
   background-color: #081D48;
+  color: #ffffff;
   border-radius: 1rem;
   padding: 1rem;
   box-shadow: rgba(0, 0, 0, 0.2);
