@@ -20,7 +20,7 @@ function Category() {
                 //get reference
                 const listingsRef = collection(db, 'listings')
                 const q = query(listingsRef, where ('type','==',params.categoryName), //same as App.js, comes from explore Links
-                orderBy('timestamp', 'desc', limit(10)
+                orderBy('timestamp', 'desc', limit(1)
                 )) 
                 //execute query
                 const qSnapShot = await getDocs(q)
@@ -50,7 +50,7 @@ function Category() {
             try {
                 //get reference
                 const listingsRef = collection(db, 'listings')
-                const q = query(listingsRef, where ('type','==',params.categoryName), limit(1), //same as App.js, comes from explore Links
+                const q = query(listingsRef, where ('type','==',params.categoryName), limit(10), //same as App.js, comes from explore Links
                 orderBy('timestamp', 'desc',startAfter(lastFetchedListing),
                 )) 
                 //execute query
