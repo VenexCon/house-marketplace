@@ -29,7 +29,6 @@ function Listing() {
             const docSnap = await getDoc(docRef)
             if(docSnap.exists()) {
                 setListing(docSnap.data())
-                console.log(docSnap.data())
                 setLoading(false)
             } else {
                 console.log('No Listing Found')
@@ -45,7 +44,7 @@ function Listing() {
     }
   return (
     <main>
-
+        
         <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]} 
         slidesPerView={1} pagination={{ clickable: true }}
         navigation
