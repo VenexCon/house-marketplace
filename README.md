@@ -16,9 +16,9 @@ A website built using React, DaisyUI, Firebase & deployed with Vercel. This webs
 
 ## Screenshots
 
-![This is the homepage](https://imgur.com/KnR0Xz2)
-![This is the search results page](https://imgur.com/Db8UU5a)
-![This is the user profile page](https://imgur.com/13UaHMO)
+![This is the homepage](/Screenshots/Screenshot%202023-01-07%20at%2016-06-55%20House%20Market%20Place.png)
+![Mobile View](/Screenshots/Screenshot%202023-01-07%20at%2016-07-13%20House%20Market%20Place.png)
+![This is the user profile page](/Screenshots/Screenshot%202023-01-07%20at%2016-08-04%20House%20Market%20Place.png)
 
 ## Deployment
 
