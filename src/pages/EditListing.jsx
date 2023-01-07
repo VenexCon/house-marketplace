@@ -218,7 +218,12 @@ function EditListing() {
         }
     }
 
-    if (loading) {return <Spinner /> }
+    /* @To-do */
+    //Insert on-submit function to hanlde and update listing details 
+    //delete residual pictures from database store 
+    //review use of useContext 
+    //begin search consultants page!
+      if (loading) {return <Spinner /> }
 
   return (
     //Consultants profiles will go here. 

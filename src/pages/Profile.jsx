@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react'
 import {getAuth, updateEmail, updateProfile} from 'firebase/auth'
-import { useState} from 'react'
+import {useState} from 'react'
 import {updateDoc, doc, collection, getDocs, query, where, orderBy, deleteDoc} from 'firebase/firestore'
 import {useNavigate, Link } from 'react-router-dom'
 import { db } from '../firebase.config'
